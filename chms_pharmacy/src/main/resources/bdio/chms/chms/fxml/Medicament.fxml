@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="mainLayout" prefHeight="672.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bdio.chms.chms.controllers.MedicationController">
+    <!-- Sidebar -->
+    <left>
+        <VBox fx:id="sidebar" prefHeight="672.0" prefWidth="98.0" spacing="15" style="-fx-background-color: #F2F2F2; -fx-padding: 20;">
+            <Button fx:id="viewMedicationButton1" onAction="#goToDashboard" prefHeight="115.0" prefWidth="160.0" style="-fx-background-color: #F2F2F2;" styleClass="sidebar-button">
+                <graphic>
+                    <ImageView fitHeight="50.0" fitWidth="50.0">
+                        <image>
+                            <Image url="@../images/home.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+
+            <Button fx:id="viewMedicationButton" onAction="#showViewMedication" prefHeight="115.0" prefWidth="160.0" style="-fx-background-color: #F2F2F2;" styleClass="sidebar-button">
+                <graphic>
+                    <ImageView fitHeight="50.0" fitWidth="50.0">
+                        <image>
+                            <Image url="@../images/med.png" />
+                        </image>
+                    </ImageView>
+                </graphic> <!-- Add text for the button -->
+            </Button>
+            <Button fx:id="goToOrdonnance" onAction="#goToOrdonnance" prefHeight="115.0" prefWidth="160.0" style="-fx-background-color: #F2F2F2;" styleClass="sidebar-button">
+                <graphic>
+                    <ImageView fitHeight="50.0" fitWidth="50.0">
+                        <image>
+                            <Image url="@../images/command.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+
+
+
+            <Button fx:id="settingsButton"  onAction="#goToFournisseur"  prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #F2F2F2;">
+                <graphic>
+                    <ImageView fitHeight="50.0" fitWidth="50.0">
+                        <image>
+                            <Image url="@../images/stats.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+            <Button fx:id="profileButton" onAction="#loadBlankPage" prefHeight="115.0" prefWidth="180.0" style="-fx-background-color: #F2F2F2;" styleClass="sidebar-button">
+                <graphic>
+                    <ImageView fitHeight="50.0" fitWidth="50.0">
+                        <image>
+                            <Image url="@../images/profile.png" />
+                        </image>
+                    </ImageView>
+                </graphic> <!-- Add text for the button -->
+            </Button>
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <StackPane fx:id="mainContent" style="-fx-padding: 20;">
+
+            <!-- Add/Modify Medications Section -->
+            <VBox fx:id="addMedicationSection" opacity="0" style="-fx-background-color: #FFFFFF; -fx-padding: 20; -fx-spacing: 20;" visible="false">
+                <Label fx:id="formTitleLabel" style="-fx-font-family: 'Poppins'; -fx-font-size: 20; -fx-text-fill: #424088;" text="Add Medication" />
+                <TextField fx:id="idTextField" promptText="Medication ID" style="-fx-font-size: 16;" />
+                <TextField fx:id="nameTextField" promptText="Medication Name" style="-fx-font-size: 16;" />
+                <TextField fx:id="descriptionTextField" promptText="Description" style="-fx-font-size: 16;" />
+                <TextField fx:id="expirationTimeTextField" promptText="Expiration Time" style="-fx-font-size: 16;" />
+                <TextField fx:id="priceTextField" promptText="Price (USD)" style="-fx-font-size: 16;" />
+                <TextField fx:id="typeTextField" promptText="Type" style="-fx-font-size: 16;" />
+                <HBox spacing="10" style="-fx-padding: 10;">
+                    <Button fx:id="saveMedicationButton" style="-fx-font-family: 'Poppins'; -fx-font-size: 16; -fx-background-color: #5A9BD5; -fx-text-fill: white;" text="Save" />
+                    <Button fx:id="closeAddMedicationButton" onAction="#closeAddMedication" style="-fx-font-family: 'Poppins'; -fx-font-size: 16; -fx-background-color: #E57373; -fx-text-fill: white;" text="Close" />
+                </HBox>
+            </VBox>
+            <!-- View Medications Section -->
+            <VBox fx:id="viewMedicationSection" style="-fx-background-color: #FFFFFF; -fx-padding: 20;" visible="true">
+                <HBox alignment="CENTER_LEFT" prefHeight="82.0" prefWidth="800.0" spacing="15" style="-fx-background-color: #FFFFFF; -fx-padding: 10;">
+                    <ImageView fx:id="sidebarLogoImageView" fitHeight="80" fitWidth="85.0">
+                        <image>
+                            <Image url="@../images/heartbeats_logo.png" />
+                        </image>
+                    </ImageView>
+                    <VBox alignment="CENTER_LEFT" spacing="5">
+                        <Label prefHeight="50.0" prefWidth="183.0" style="-fx-font-family: 'Montserrat'; -fx-font-weight: bold; -fx-font-size: 35; -fx-text-fill: #5A9BD5;" text="CarePoint" />
+                        <Label style="-fx-font-family: 'Poppins'; -fx-font-size: 20; -fx-text-fill: #888888;" text="Health Management System">
+                     <VBox.margin>
+                        <Insets top="-10.0" />
+                     </VBox.margin></Label>
+                    </VBox>
+
+                </HBox>
+
+                <!-- Add Medicament Button positioned at the bottom right of VBox -->
+                <AnchorPane>
+                    <Button fx:id="addMedicationButton" alignment="CENTER" contentDisplay="CENTER" layoutX="634.0" onAction="#showAddMedication" scaleX="1.5" scaleY="1.5" scaleZ="1.5" style="-fx-font-family: 'Poppins'; -fx-font-size: 16; -fx-background-color: #81C784; -fx-text-fill: white;" text="+ Add Medication" AnchorPane.bottomAnchor="1.6" AnchorPane.rightAnchor="65.2" />
+                </AnchorPane>
+
+                <Label prefHeight="30.0" prefWidth="214.0" style="-fx-font-family: 'Poppins'; -fx-font-size: 20; -fx-text-fill: #424088;" text="List of Medications" />
+                <TableView fx:id="medicationTable" prefHeight="600.0" prefWidth="800.0" style="-fx-font-family: 'Encode Sans'; -fx-font-size: 14;">
+                    <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="100" text="ID" />
+                        <TableColumn fx:id="nameColumn" prefWidth="200" text="Medication Name" />
+                        <TableColumn fx:id="descriptionColumn" prefWidth="300" text="Description" />
+                        <TableColumn fx:id="expirationTimeColumn" prefWidth="150" text="Expiration Time" />
+                        <TableColumn fx:id="priceColumn" prefWidth="100" text="Price (MAD)" />
+                        <TableColumn fx:id="typeColumn" prefWidth="150" text="Type" />
+                        <TableColumn fx:id="actionColumn" prefWidth="150" text="Action" />
+                    </columns>
+                </TableView>
+                <HBox spacing="10" style="-fx-padding: 10;" />
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>

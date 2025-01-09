@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.dashboard.MainDashboardController">
+    <VBox alignment="CENTER" spacing="20.0">
+        <Button text="Appointments" onAction="#handleMainApplicationButton" />
+        <Button text="Pharmacy" onAction="#handleMainPharmacyButton" />
+    </VBox>
+</AnchorPane>
